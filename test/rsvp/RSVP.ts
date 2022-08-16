@@ -2,26 +2,26 @@ import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 import type { SignerWithAddress } from "@nomiclabs/hardhat-ethers/dist/src/signer-with-address";
 import { ethers } from "hardhat";
 
-import type { Signers } from "../types";
-import { shouldBehaveLikeGreeter } from "./Greeter.behavior";
-import { deployGreeterFixture } from "./Greeter.fixture";
+// import type { Signers } from "../types";
+import { shouldBehaveLikeRSVP } from "./RSVP.behavior";
+import { deployRSVPFixture } from "./RSVP.fixture";
 
 describe("Unit tests", function () {
   before(async function () {
-    this.signers = {} as Signers;
+    // this.signers = {} as Signers;
 
     const signers: SignerWithAddress[] = await ethers.getSigners();
-    this.signers.admin = signers[0];
+    this.signers = signers;
 
     this.loadFixture = loadFixture;
   });
 
-  describe("Greeter", function () {
+  describe("RSVP", function () {
     beforeEach(async function () {
-      const { greeter } = await this.loadFixture(deployGreeterFixture);
-      this.greeter = greeter;
+      const { rsvp } = await this.loadFixture(deployRSVPFixture);
+      this.rsvp = rsvp;
     });
 
-    shouldBehaveLikeGreeter();
+    shouldBehaveLikeRSVP();
   });
 });
