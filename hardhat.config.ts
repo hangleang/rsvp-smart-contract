@@ -31,6 +31,7 @@ const chainIds = {
   "polygon-mainnet": 137,
   "polygon-mumbai": 80001,
   rinkeby: 4,
+  localhost: 1337,
 };
 
 function getChainConfig(chain: keyof typeof chainIds): NetworkUserConfig {
@@ -79,6 +80,9 @@ const config: HardhatUserConfig = {
   networks: {
     hardhat: {
       chainId: chainIds.hardhat,
+    },
+    localhost: {
+      chainId: chainIds.localhost,
     },
     arbitrum: getChainConfig("arbitrum-mainnet"),
     avalanche: getChainConfig("avalanche"),
